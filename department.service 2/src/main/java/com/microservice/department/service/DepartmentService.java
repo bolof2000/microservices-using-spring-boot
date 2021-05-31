@@ -1,7 +1,7 @@
 package com.microservice.department.service;
 
 import com.microservice.department.entity.Department;
-import com.microservice.department.repository.DepartmentRepository;
+import com.microservice.department.repository.DepartmentRepositoryUsingMongoDB;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,15 +11,15 @@ import org.springframework.stereotype.Service;
 public class DepartmentService {
 
     @Autowired
-    private DepartmentRepository departmentRepository;
+    private DepartmentRepositoryUsingMongoDB departmentRepositoryUsingMongoDB;
 
     public Department saveDepartment(Department department) {
         log.info("Inside saveDepartment of DepartmentService");
-        return departmentRepository.save(department);
+        return departmentRepositoryUsingMongoDB.save(department);
     }
 
     public Department findDepartmentById(Long departmentId) {
         log.info("Inside saveDepartment of DepartmentService");
-        return departmentRepository.findByDepartmentId(departmentId);
+        return departmentRepositoryUsingMongoDB.findByDepartmentId(departmentId);
     }
 }
